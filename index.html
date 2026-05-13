@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SpeakWise AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>SpeakWise AI</h1>
+
+        <h3>Group Discussion Practice</h3>
+
+        <p><b>Topic:</b> Is Artificial Intelligence beneficial for society?</p>
+
+        <form action="/analyze" method="POST">
+
+            <textarea name="answer" rows="10" placeholder="Type your answer here..." required></textarea>
+
+            <button type="submit">Analyze Answer</button>
+
+        </form>
+
+        {% if feedback %}
+
+        <div class="result">
+            <h2>Feedback</h2>
+
+            <ul>
+                {% for item in feedback %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+            <h2>Model Answer</h2>
+            <p>{{ model_answer }}</p>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
